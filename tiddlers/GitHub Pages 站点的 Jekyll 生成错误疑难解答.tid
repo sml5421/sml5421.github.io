@@ -1,0 +1,150 @@
+created: 20240331121046592
+creator: TidGi User
+modified: 20240331121107312
+modifier: TidGi User
+tags: 
+title: GitHub Pages 站点的 Jekyll 生成错误疑难解答
+
+生成错误疑难解答
+如果 Jekyll 在本地或在 GitHub 上构建 GitHub Pages 站点时遇到错误，您可以使用错误消息进行故障排除。有关错误消息以及如何查看错误消息的详细信息，请参阅“关于 GitHub Pages 站点的 Jekyll 生成错误”。
+
+如果您收到一般错误消息，请检查常见问题。
+
+您使用的是不受支持的插件。有关详细信息，请参阅“关于 GitHub Pages 和 Jekyll”。
+您的存储库已超出我们的存储库大小限制。有关详细信息，请参阅“关于 GitHub 上的大文件"
+您更改了 _config.yml 文件中的设置。如果从分支发布站点，GitHub Pages 将在构建过程中覆盖此设置。source
+已发布文件中的文件名包含不支持的冒号 （）。:
+如果您收到特定的错误消息，请查看以下错误消息的故障排除信息。
+
+修复任何错误后，通过将更改推送到站点的源分支（如果从分支发布）或触发自定义 GitHub Actions 工作流（如果使用 GitHub Actions 发布）来触发另一个构建。
+
+配置文件错误
+此错误意味着您的网站无法生成，因为 _config.yml 文件包含语法错误。
+
+若要进行故障排除，请确保 _config.yml 文件遵循以下规则：
+
+使用空格而不是制表符。
+在 for each 键值对后包含一个空格，例如 。:timezone: Africa/Nairobi
+仅使用 UTF-8 字符。
+引用任何特殊字符，例如 ，例如 。:title: "my awesome site: an adventure in parse errors"
+对于多行值，用于创建换行符并忽略换行符。|>
+要识别任何错误，您可以将 YAML 文件的内容复制并粘贴到 YAML linter 中，例如 YAML 验证程序。
+
+注意：如果您的仓库包含符号链接，则需要使用 GitHub Actions 工作流发布您的站点。有关 GitHub Actions 的详细信息，请参阅“GitHub Actions 文档”。
+
+日期不是有效的日期时间
+此错误意味着您网站上的某个网页包含无效的日期时间。
+
+若要进行故障排除，请在错误消息和文件布局中搜索文件，以查找对任何与日期相关的 Liquid 筛选器的调用。确保传递到与日期相关的液体过滤器的任何变量在所有情况下都具有值，并且永远不要传递 或 。有关详细信息，请参阅 Liquid 文档中的“液体过滤器”。nil""
+
+文件在包含目录中不存在
+此错误意味着您的代码引用了 _includes 目录中不存在的文件。
+
+若要进行故障排除，请在错误消息中搜索文件，以查看引用其他文件的位置，例如 .如果引用的任何文件不在 _includes 目录中，请将文件复制或移动到 _includes 目录中。include{% include example_header.html %}
+
+文件未正确进行 UTF-8 编码
+此错误意味着您使用了非拉丁字符，例如 ，而没有告诉计算机需要这些符号。日本語
+
+若要进行故障排除，请通过将以下行添加到 _config.yml 文件来强制进行 UTF-8 编码：
+
+encoding: UTF-8
+荧光笔语言无效
+此错误表示您在配置文件中指定了除 Rouge 或 Pygments 以外的任何语法突出显示。
+
+若要进行故障排除，请更新 _config.yml 文件以指定 Rouge 或 Pygments。有关详细信息，请参阅“关于 GitHub Pages 和 Jekyll”。
+
+无效的发布日期
+此错误意味着您网站上的帖子在文件名或 YAML 前端包含无效日期。
+
+若要进行故障排除，请确保所有日期的格式都设置为 UTC 的 YYYY-MM-DD HH：MM：SS，并且是实际的日历日期。要指定与 UTC 偏移的时区，请使用 YYYY-MM-DD HH：MM：SS +/-TTTT 格式，例如 。2014-04-18 11:30:00 +0800
+
+如果在 _config.yml 文件中指定日期格式，请确保格式正确。
+
+无效的 Sass 或 SCSS
+此错误表示您的存储库包含包含无效内容的 Sass 或 SCSS 文件。
+
+若要进行故障排除，请查看错误消息中包含的行号，以查找无效的 Sass 或 SCSS。为了帮助防止将来出现错误，请为您喜欢的文本编辑器安装 Sass 或 SCSS linter。
+
+无效的子模块
+此错误意味着您的存储库包含尚未正确初始化的子模块。
+
+要进行故障排除，首先要确定是否真的要使用子模块，该子模块是 Git 项目中的 Git 项目;子模块有时是意外创建的。
+
+如果不想使用子模块，请删除该子模块，将 PATH-TO-SUBMODULE 替换为子模块的路径：
+
+git submodule deinit PATH-TO-SUBMODULE
+git rm PATH-TO-SUBMODULE
+git commit -m "Remove submodule"
+rm -rf .git/modules/PATH-TO-SUBMODULE
+如果要使用子模块，请确保在引用子模块时使用（不是），并且子模块位于公共存储库中。https://http://
+
+数据文件中的 YAML 无效
+此错误意味着 _data 文件夹中的多个文件之一包含无效的 YAML。
+
+若要进行故障排除，请确保 _data 文件夹中的 YAML 文件遵循以下规则：
+
+使用空格而不是制表符。
+在 for each 键值对后包含一个空格，例如 。:timezone: Africa/Nairobi
+仅使用 UTF-8 字符。
+引用任何特殊字符，例如 ，例如 。:title: "my awesome site: an adventure in parse errors"
+对于多行值，用于创建换行符并忽略换行符。|>
+要识别任何错误，您可以将 YAML 文件的内容复制并粘贴到 YAML linter 中，例如 YAML 验证程序。
+
+有关 Jekyll 数据文件的详细信息，请参阅 Jekyll 文档中的“数据文件”。
+
+Markdown 错误
+此错误意味着存储库包含 Markdown 错误。
+
+若要进行故障排除，请确保使用的是受支持的 Markdown 处理器。有关详细信息，请参阅“使用 Jekyll 为 GitHub Pages 站点设置 Markdown 处理器”。
+
+然后，确保错误消息中的文件使用有效的 Markdown 语法。有关详细信息，请参阅 Daring Fireball 上的“Markdown：语法”。
+
+缺少 docs 文件夹
+此错误意味着您已选择分支上的文件夹作为发布源，但该分支上的存储库根目录中没有文件夹。docsdocs
+
+要进行故障排除，如果您的文件夹被意外移动，请尝试将文件夹移回您为发布源选择的分支上的存储库根目录。如果文件夹被意外删除，您可以：docsdocsdocs
+
+使用 Git 还原或撤消删除操作。有关更多信息，请参阅 Git 文档中的“git-revert”。
+在存储库的根目录中，在为发布源选择的分支上创建一个新文件夹，并将站点的源文件添加到该文件夹中。有关详细信息，请参阅“创建新文件”。docs
+更改发布来源。有关详细信息，请参阅“为 GitHub Pages 站点配置发布源”。
+缺少子模块
+此错误意味着您的存储库包含不存在或尚未正确初始化的子模块。
+
+要进行故障排除，首先要确定是否真的要使用子模块，该子模块是 Git 项目中的 Git 项目;子模块有时是意外创建的。
+
+如果不想使用子模块，请删除该子模块，将 PATH-TO-SUBMODULE 替换为子模块的路径：
+
+git submodule deinit PATH-TO-SUBMODULE
+git rm PATH-TO-SUBMODULE
+git commit -m "Remove submodule"
+rm -rf .git/modules/PATH-TO-SUBMODULE
+如果确实要使用子模块，请初始化该子模块。有关详细信息，请参阅 Pro Git 书籍中的“Git 工具 - 子模块”。
+
+配置了相对永久链接
+此错误意味着 _config.yml 文件中有相对永久链接，而 GitHub Pages 不支持这些链接。
+
+永久链接是引用您网站上特定页面的永久 URL。绝对永久链接从站点的根目录开始，而相对永久链接从包含引用页面的文件夹开始。GitHub Pages 和 Jekyll 不再支持相对永久链接。有关永久链接的更多信息，请参阅 Jekyll 文档中的“永久链接”。
+
+要进行问题排查，请从 _config.yml 文件中移除该行，并使用绝对永久链接重新格式化网站中的任何相对永久链接。有关详细信息，请参阅“编辑文件”。relative_permalinks
+
+“for”循环中的语法错误
+此错误意味着您的代码在 Liquid 循环声明中包含无效语法。for
+
+若要进行故障排除，请确保错误消息中文件中的所有循环都具有正确的语法。有关循环的正确语法的更多信息，请参阅 Liquid 文档中的“迭代标签”。forfor
+
+标签未正确关闭
+此错误消息意味着您的代码包含未正确关闭的逻辑标记。例如，必须由 关闭。{% capture example_variable %}{% endcapture %}
+
+若要进行故障排除，请确保错误消息中文件中的所有逻辑标记都已正确关闭。有关更多信息，请参阅 Liquid 文档中的“Liquid 标签”。
+
+标记未正确终止
+此错误意味着您的代码包含未正确终止的输出标记。例如，而不是 .{{ page.title }{{ page.title }}
+
+若要进行故障排除，请确保错误消息中文件中的所有输出标记都以 .有关更多信息，请参阅 Liquid 文档中的“Liquid 对象”。}}
+
+未知标记错误
+此错误意味着您的代码包含无法识别的 Liquid 标记。
+
+要进行故障排除，请确保错误消息中文件中的所有 Liquid 标签都与 Jekyll 的默认变量匹配，并且标签名称中没有拼写错误。有关默认变量的列表，请参阅 Jekyll 文档中的“变量”。
+
+不受支持的插件是无法识别的标签的常见来源。如果您通过在本地生成站点并将静态文件推送到 GitHub 来在站点中使用不受支持的插件，请确保该插件没有引入不在 Jekyll 默认变量中的标记。有关支持的插件列表，请参阅“关于 GitHub Pages 和 Jekyll”。
