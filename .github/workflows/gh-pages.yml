@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@8ade135a41bc03ea155e62e844d188df1ea18608 # v4
-      - uses: actions/setup-node@v3.8.1
+      - uses: actions/setup-node@v4
         with:
           node-version: '20'
 
@@ -49,9 +49,7 @@ jobs:
         uses: actions/upload-pages-artifact@v2.0.0
         with:
           # Upload entire repository
-          name: github-pages
-          path: /path/to/your/artifact
-          #path: ./public-dist
+          path: ./public-dist
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4.0.4
