@@ -1,0 +1,45 @@
+created: 20240331115910407
+creator: TidGi User
+modified: 20240331122839029
+modifier: TidGi User
+tags: github
+title: Error: No artifacts named "github-pages" were found for this workflow run.
+
+解决不了
+
+在 GitHub Actions 中解决找不到名为 'github-pages' 的产物（artifacts）问题，你可以遵循以下步骤进行排查和解决：
+
+确认上传步骤：
+确保你的 GitHub Actions 工作流程中包含了上传产物的步骤，并且使用了正确的 actions/upload-artifact 版本。例如，使用 actions/upload-artifact@v4 或更高版本。
+
+- name: Upload Artifact
+  uses: actions/upload-artifact@v4
+  with:
+    name: github-pages
+    path: /path/to/your/artifact
+检查产物路径：
+确认 path 字段指向的路径是正确的，并且包含了你希望上传的文件。这个路径应该是相对于执行上传动作的工作目录的。
+
+检查产物名称：
+确认上传时使用的名称（name 字段）与你在后续步骤中引用该产物时使用的名称一致。
+
+检查工作流程执行状态：
+查看工作流程的执行日志，确保上传产物的步骤没有失败。如果上传步骤失败，需要解决导致失败的问题。
+
+检查权限问题：
+确保执行上传操作的用户或服务账户（通常是 github.actor）有足够的权限来上传产物。
+
+检查缓存问题：
+如果你在工作流程中使用了缓存，确保缓存没有影响到产物的生成或上传。
+
+检查访问控制和分支保护规则：
+确认你的工作流程不会因为仓库的访问控制设置或分支保护规则而被阻止执行。
+
+检查存储库设置：
+确认你的 GitHub Pages 网站是设置为从正确的分支和目录生成的。
+
+清理和重试：
+如果你怀疑是缓存或临时问题导致的，尝试清理工作流程的缓存或删除后重新创建工作流程运行。
+
+查看 GitHub 社区和支持：
+如果上述步骤都无法解决问题，你可以在 GitHub 社区中寻求帮助，或者查看 GitHub 的支持文档和论坛。
