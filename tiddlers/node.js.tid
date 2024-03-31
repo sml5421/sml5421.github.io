@@ -1,0 +1,13 @@
+created: 20240331125258235
+creator: TidGi User
+modified: 20240331125533385
+modifier: TidGi User
+tags: 
+title: node.js
+
+[[https://github.com/marketplace/actions/setup-node-js-environment]]
+```
+ 				 name: Setup Node.js environment
+                uses: actions/setup-node@v4.0.2
+```
+            
