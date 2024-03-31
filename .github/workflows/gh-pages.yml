@@ -46,10 +46,12 @@ jobs:
         run: npx workbox injectManifest workbox-config.js
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v4
+        uses: actions/upload-pages-artifact@v2.0.0
         with:
           # Upload entire repository
-          path: ./public-dist
+          name: github-pages
+          path: /path/to/your/artifact
+          #path: ./public-dist
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4.0.4
