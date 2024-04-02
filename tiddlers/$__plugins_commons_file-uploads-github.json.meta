@@ -1,0 +1,12 @@
+author: Saq Imtiaz
+core-version: >=5.1.23
+dependents: 
+description: Github uploader for uploading binary files to external storage
+list: readme settings license
+name: File Uploads: Github
+parent-plugin: $:/plugins/commons/file-uploads
+plugin-priority: 0
+plugin-type: plugin
+title: $:/plugins/commons/file-uploads-github
+type: application/json
+version: 0.1.2
