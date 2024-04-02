@@ -1,0 +1,57 @@
+created: 20240402053145855
+modified: 20240402053245513
+tags: $:/plugins/linonetwo/sub-wiki/readme
+title: Tiddly wiki webdav
+
+如果托管在支持 WebDAV 的服务器上，TiddlyWiki 将通过 HTTP 自动保存 2016 年之后创建的 TiddlyWiki 的更改。如果您在 2016 年 2 月 16 日之前创建了 wiki，则需要升级才能启用 WebDAV。
+
+跨平台轻量级服务器
+轻巧、便携、易于使用的解决方案
+
+RCLone（英语：RCL
+运行它可以像以下简单一样简单：
+rclone serve webdav some_directory_containing_tiddlywiki_files
+Micromata Dave - 简单的 WebDAV 服务器
+dav-server 是提供 HTML TiddlyWiki 文件夹的快速方法。
+Hacdias WebDAV 服务器
+Mohammad Scripts 在 Tiddlywiki 中使用此 WebDAV 服务器的指南 — TW 中的代码、宏和解决方案
+窗户
+IIS的
+pmario的视频指南： 01 简介 - 如何在 IIS 和 WebDAV 中使用 TiddlyWiki - YouTube
+MagoArcade 关于使用“真实”IIS 服务器 + SSL + 带有自签名证书的 WindowsAuth 的分步 HowTo 视频：TiddlyWiki 安装 - Windows IIS WebDAV 方法 - YouTube
+适用于 Windows 的 SharePoint / OneDrive
+使用扩展名保存您的 TiddlyWiki 文件.aspx
+将其复制到 SharePoint/OneDrive for Business 同步库
+只要 WebDAV 没有被禁用，将单文件 wiki 从 .html 重命名为 .aspx 在存储在这些文件夹之一中时“就可以了”
+这可能也适用于 Mac。
+OSX操作系统
+WebDavNav 服务器通过 Mac App Store。
+人造人
+RCX 是基于 rclone 的 Android 开源文件管理器。它可以在 F-Droid 和 Google Play 上使用。由于其集成的WebDAV服务器，它允许您编辑放在口袋里的wiki。您也可以与本地网络上的其他设备共享它们。
+服务器
+许多 NAS 或 Subversion 服务器都支持开箱即用的 WebDAV。不过，设置自己的服务器可能需要一些努力：
+
+免费托管
+一些经过测试的 WebDAV 托管服务（box.com、swissdisk.com）不支持通过 Web 浏览器访问 HTML 文件，因此它们无法与 TiddlyWiki 一起使用。然而，据报道，GMX 媒体中心 （www.gmx.net） 使用免费帐户与 WebDAV 合作。
+
+库夫
+Koofr 是一种强调隐私的云服务。要使用他们的 webdav 服务，请在 .然后转到他们的 Web 应用程序。然后从左侧的菜单中。向下滚动到 。使用一些名称，如“tiddlywiki”并生成密码。不管它说什么，还是将密码保存在某个地方。koofr.eupreferencespasswordApp Passwords
+
+您可能需要将文件扩展名重命名为 。然后将您的文件上传到某个路径上，最好没有空格到他们的网站。然后在浏览器中链接到地址为以下地址的网站：.aspx
+
+https://app.koofr.net/dav/Koofr/myfile.aspx
+执行此操作时，将出现一个身份验证对话框。使用您用于注册的电子邮件地址和您刚刚生成的密码进行登录。
+
+您应该能够加载文件并将更改保存回原位。
+
+付费主机
+pCloud
+pCloud 是云服务，服务器遍布欧洲和美国。注册时，您需要选择最适合您的服务器位置。然后在 Web 浏览器中，登录到该服务。通过浏览器界面上传您要访问的文件。然后，在另一个选项卡中，打开任一
+
+https://webdav.pcloud.com
+如果您的服务器位于美国，或者
+
+https://ewebdav.pcloud.com
+如果您的服务器位于欧洲。
+
+应该会出现一个文件导航页面。导航到您的文件并在浏览器中打开。您应该能够创建和保存更改。

@@ -1,0 +1,7 @@
+created: 20240402053313128
+icon: 📒
+modified: 20240402053406557
+tags: $:/plugins/linonetwo/sub-wiki/readme
+title: Git报错
+
+不要再在OneDrive挂载的文件夹里面放Git仓库了，肯定会读取失败的aaaaa。
