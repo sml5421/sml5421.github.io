@@ -1,0 +1,21 @@
+created: 20240405072724815
+modified: 20240405072746960
+tags: 
+title: 设置 GitHub 页面和 Tiddlywiki5
+
+指令
+此指令适用于早于 5.1.20 的 Tiddlywiki，同时也可用于最新的 Tiddlywiki。
+
+创建 GitHub 存储库（或导航到现有存储库）
+通过 Web 界面或命令行提交 Tiddlywiki 文件，就像提交任何其他文件一样
+使用 Tiddlywiki 5 并创建一个包含您喜欢的所有内容的 wiki（参见 制作 Tiddlywiki
+另存为文件index.html
+提交到 GitHub 存储库index.html
+您可以将 放在仓库的根目录下index.html
+或者，您可以创建一个文件夹并将文件放入其中，或选择的任何其他文件夹。docsindex.html
+通过仓库的设置激活 GitHub Pages
+如果您位于存储库的根目录中，则使用 branch 作为 GitHub 页面的源index.htmlmaster
+如果位于文件夹中，请选择index.htmldocsmaster branch/docs folder
+等待几秒钟，让 GitHub 创建网站 （GitHub Pages）
+头https://username.github.io/repo-name/
+示例：此存储库的网站位于 https://kookma.github.io/Tiddlywiki-and-GitHub-Pages/
